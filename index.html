@@ -402,6 +402,102 @@
             color: white;
         }
 
+        /* --- Contact Section --- */
+        .contact-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            /* Info takes less space than the form */
+            gap: 50px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .info-box {
+            background: var(--bg-secondary);
+            padding: 25px;
+            border-radius: 12px;
+            border-left: 4px solid var(--primary);
+            transition: var(--transition);
+        }
+
+        .info-box:hover {
+            transform: translateX(5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .info-box h3 {
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+            color: var(--text-dark);
+        }
+
+        .info-box p {
+            color: var(--text-gray);
+            font-size: 0.95rem;
+        }
+
+        .contact-form {
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            border: 1px solid #eee;
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+        }
+
+        .input-group input,
+        .input-group textarea {
+            width: 100%;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background: var(--bg-secondary);
+            font-family: inherit;
+            font-size: 0.95rem;
+            color: var(--text-dark);
+            transition: var(--transition);
+        }
+
+        .input-group textarea {
+            height: 150px;
+            resize: vertical;
+            /* Allows user to drag the text box down, but not sideways */
+        }
+
+        .input-group input:focus,
+        .input-group textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            background: white;
+            box-shadow: 0 0 0 3px rgba(85, 89, 177, 0.1);
+            /* Soft purple glow */
+        }
+
+        /* Adjust for mobile screens */
+        @media (max-width: 768px) {
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-form {
+                padding: 25px;
+            }
+        }
+
         /* --- Footer --- */
         footer {
             background-color: var(--bg-secondary);
@@ -679,7 +775,7 @@
                 <span class="text-gray">Let's work together</span>
                 <h2>Get In Touch</h2>
             </div>
-            
+
             <div class="contact-container">
                 <div class="contact-info">
                     <div class="info-box">
