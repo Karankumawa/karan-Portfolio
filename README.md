@@ -17,10 +17,3 @@ A modern, responsive personal portfolio website designed to showcase my web deve
 * **CSS3:** Custom styling, Flexbox, CSS Grid, and CSS Variables for theming.
 * **JavaScript:** Smooth scrolling and DOM manipulation.
 * **Typed.js:** Library used for the dynamic typing effect in the hero section.
-
-##  Getting Started / Local Setup
-To run this project locally on your machine:
-
-1. Clone this repository:
-   ```bash
-   git clone [https://github.com/your-username/your-repo-name.git](https://github.com/Karankumawa/karan-Portfolio.git)
