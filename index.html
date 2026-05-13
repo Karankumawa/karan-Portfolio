@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Karan | Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* --- CSS Variables for Consistent Theming --- */
+        :root {
+            --primary: #5559b1;
+            --primary-light: #7b7ed1;
+            --bg-color: #ffffff;
+            --bg-secondary: #f4f4f9;
+            --text-dark: #333333;
+            --text-gray: #666666;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-dark);
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+        }
+
+        /* --- Typography & Utilities --- */
+        h1,
+        h2,
+        h3 {
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        .text-gray {
+            color: var(--text-gray);
+            font-size: 1.1rem;
+        }
+
+        .purple {
+            color: var(--primary);
+            font-weight: 700;
+        }
+
+        section {
+            padding: 80px 10%;
+        }
+
+        hr {
+            border: 0;
+            background: rgba(85, 89, 177, 0.2);
+            height: 1px;
+            margin: 0 10%;
+        }
+
+        /* --- Navigation --- */
+        header {
+            position: sticky;
+            top: 0;
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(5px);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            z-index: 1000;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 80px;
+            padding: 0 10%;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--text-dark);
+        }
+
+        .logo span {
+            color: var(--primary);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 30px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 400;
+            transition: var(--transition);
+        }
+
+        nav ul li a:hover {
+            color: var(--primary);
+        }
+
+        /* --- Buttons --- */
+        .buttons {
+            margin-top: 30px;
+            display: flex;
+            gap: 15px;
+        }
+
+        .btn {
+            padding: 12px 24px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 1rem;
+            font-family: inherit;
+            cursor: pointer;
+            transition: var(--transition);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .btn:hover {
+            background: var(--primary-light);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(85, 89, 177, 0.3);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+
+        .btn-outline:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            min-height: 80vh;
+        }
+
+        .hero-text {
+            flex: 1;
+            font-size: 2.5rem;
+            line-height: 1.2;
+        }
+
+        #element {
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        .hero-image {
+            flex: 1;
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .hero-image img {
+            width: 80%;
+            max-width: 400px;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        /* --- Timeline (Milestone) Section --- */
+        .experience-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px 0 20px 40px;
+            /* Space on the left for the line */
+        }
+
+        /* The vertical line */
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 10px;
+            width: 4px;
+            background: var(--primary-light);
+            border-radius: 4px;
+            opacity: 0.4;
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 50px;
+        }
+
+        .timeline-item:last-child {
+            margin-bottom: 0;
+        }
+
+        /* The circle on the line */
+        .timeline-dot {
+            position: absolute;
+            left: -42px;
+            /* Pulls it over the line */
+            top: 0;
+            width: 24px;
+            height: 24px;
+            background: white;
+            border: 4px solid var(--primary);
+            border-radius: 50%;
+            z-index: 1;
+            transition: var(--transition);
+        }
+
+        /* Hover effect for the dot */
+        .timeline-item:hover .timeline-dot {
+            background: var(--primary);
+            box-shadow: 0 0 10px var(--primary-light);
+        }
+
+        /* The content box */
+        .timeline-content {
+            background: var(--bg-secondary);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.03);
+            transition: var(--transition);
+            border: 1px solid rgba(85, 89, 177, 0.1);
+        }
+
+        /* Hover effect for the box */
+        .timeline-item:hover .timeline-content {
+            transform: translateX(10px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+            border-color: var(--primary-light);
+        }
+
+        .timeline-date {
+            display: inline-block;
+            padding: 6px 14px;
+            background: rgba(85, 89, 177, 0.1);
+            color: var(--primary);
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            letter-spacing: 0.5px;
+        }
+
+        .timeline-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: var(--text-dark);
+        }
+
+        .timeline-desc {
+            color: var(--text-gray);
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        /* --- Projects Section --- */
+        .projects-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+
+        .project-card {
+            background: white;
+            border: 1px solid #eee;
+            border-radius: 12px;
+            overflow: hidden;
+            transition: var(--transition);
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .project-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .project-info {
+            padding: 20px;
+        }
+
+        .project-info h3 {
+            margin-bottom: 10px;
+        }
+
+        .project-info p {
+            color: var(--text-gray);
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+        }
+
+        .project-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .project-links a {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .project-links a:hover {
+            text-decoration: underline;
+        }
+
+        /* --- Footer --- */
+        footer {
+            background-color: var(--bg-secondary);
+            padding: 60px 10% 20px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-content h3 {
+            margin-bottom: 20px;
+        }
+
+        .footer-content ul {
+            list-style: none;
+        }
+
+        .footer-content ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-content ul li a {
+            text-decoration: none;
+            color: var(--text-gray);
+            transition: var(--transition);
+        }
+
+        .footer-content ul li a:hover {
+            color: var(--primary);
+        }
+
+        .footer-rights {
+            text-align: center;
+            color: var(--text-gray);
+            border-top: 1px solid #ddd;
+            padding-top: 20px;
+            font-size: 0.9rem;
+        }
+
+        /* --- Responsive Design (Mobile & Tablet) --- */
+        @media (max-width: 900px) {
+            .hero {
+                flex-direction: column;
+                text-align: center;
+                padding-top: 40px;
+            }
+
+            .hero-text {
+                font-size: 2rem;
+                margin-bottom: 40px;
+            }
+
+            .buttons {
+                justify-content: center;
+            }
+
+            .hero-image {
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                height: auto;
+                padding: 20px 10%;
+            }
+
+            nav ul {
+                margin-top: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            nav ul li {
+                margin: 5px 15px;
+            }
+
+            .timeline {
+                padding-left: 20px;
+            }
+
+            .timeline-dot {
+                left: -22px;
+                width: 20px;
+                height: 20px;
+            }
+
+            .timeline::before {
+                left: -3px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div class="logo">Karan</div>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="home" class="hero">
+            <div class="hero-text">
+                <div class="text-gray">Hi, I am <span class="purple">Karan</span></div>
+                <div>A passionate</div>
+                <span id="element"></span>
+                <div class="buttons">
+                    <button class="btn">Download Resume</button>
+                    <button class="btn btn-outline">Visit GitHub</button>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="pg.jpg" alt="Karan's Profile">
+            </div>
+        </section>
+
+        <hr>
+
+        <section id="experience">
+            <div class="experience-header">
+                <span class="text-gray">My Career Journey</span>
+                <h2>Work Experience</h2>
+            </div>
+
+            <div class="timeline">
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-date">2020 - 2021</span>
+                        <h3 class="timeline-title">HTML Developer</h3>
+                        <p class="timeline-desc">
+                            Started my career developing responsive websites using HTML, CSS, and JavaScript. Maintained
+                            websites for clients, ensuring cross-browser compatibility and optimizing frontend
+                            performance.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-date">2021 - 2022</span>
+                        <h3 class="timeline-title">Node.js Developer</h3>
+                        <p class="timeline-desc">
+                            Transitioned to backend development. Built scalable backend systems and APIs. Handled
+                            server-side logic and database integration to ensure smooth application functionality and
+                            data security.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-date">2022 - Present</span>
+                        <h3 class="timeline-title">UI/UX Designer & Web Developer</h3>
+                        <p class="timeline-desc">
+                            Currently designing user-centric interfaces and wireframes while continuing to code.
+                            Collaborating with cross-functional teams to translate beautiful designs into high-quality,
+                            functional web applications.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <hr>
+
+        <section id="projects">
+            <div class="projects-header">
+                <span class="text-gray">Browse my recent</span>
+                <h2>Projects</h2>
+            </div>
+
+            <div class="projects-grid">
+                <div class="project-card">
+                    <img src="https://via.placeholder.com/600x400" alt="Project Screenshot">
+                    <div class="project-info">
+                        <h3>E-Commerce Dashboard</h3>
+                        <p>A full-stack dashboard for managing online store inventory, sales, and user data.</p>
+                        <div class="project-links">
+                            <a href="#" target="_blank">Live Demo ↗</a>
+                            <a href="#" target="_blank">GitHub ↗</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <img src="https://via.placeholder.com/600x400" alt="Project Screenshot">
+                    <div class="project-info">
+                        <h3>Weather Application</h3>
+                        <p>A responsive weather app utilizing a third-party API to deliver real-time forecasts.</p>
+                        <div class="project-links">
+                            <a href="#" target="_blank">Live Demo ↗</a>
+                            <a href="#" target="_blank">GitHub ↗</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <img src="https://via.placeholder.com/600x400" alt="Project Screenshot">
+                    <div class="project-info">
+                        <h3>Portfolio Template</h3>
+                        <p>A minimal, responsive portfolio template built with HTML, CSS, and modern JavaScript.</p>
+                        <div class="project-links">
+                            <a href="#" target="_blank">Live Demo ↗</a>
+                            <a href="#" target="_blank">GitHub ↗</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <hr>
+        <section id="skills">
+            <div class="skills-header">
+                <span class="text-gray">My technical toolkit</span>
+                <h2>Skills & Expertise</h2>
+            </div>
+
+            <div class="skills-container">
+
+                <div class="skill-category">
+                    <h3>Frontend</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">HTML5</span>
+                        <span class="skill-tag">CSS3</span>
+                        <span class="skill-tag">JavaScript</span>
+                        <span class="skill-tag">React.js</span>
+                        <span class="skill-tag">Tailwind CSS</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3>Backend</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Node.js</span>
+                        <span class="skill-tag">Express.js</span>
+                        <span class="skill-tag">MongoDB</span>
+                        <span class="skill-tag">REST APIs</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3>Design & Tools</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Figma</span>
+                        <span class="skill-tag">Adobe XD</span>
+                        <span class="skill-tag">Git / GitHub</span>
+                        <span class="skill-tag">Video Editing</span>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <hr>
+
+    </main>
+
+    <footer id="contact">
+        <div class="footer-content">
+            <div>
+                <h3>Karan's Portfolio</h3>
+                <p class="text-gray">Building digital experiences that matter.</p>
+            </div>
+            <div>
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#experience">Experience</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3>Socials</h3>
+                <ul>
+                    <li><a href="#">LinkedIn</a></li>
+                    <li><a href="#">GitHub</a></li>
+                    <li><a href="#">Twitter</a></li>
+                    <li><a href="#">Instagram</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-rights">
+            Copyright &#169; 2024 karanportfolio.com | All rights reserved.
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/typed.js@3.0.0/dist/typed.umd.js"></script>
+    <script>
+        // Typed.js Initialization
+        var typed = new Typed('#element', {
+            strings: ['Web Developer.', 'Graphic Designer.', 'UI/UX Enthusiast.', 'Video Editor.'],
+            typeSpeed: 60,
+            backSpeed: 40,
+            loop: true
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
